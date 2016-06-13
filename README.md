@@ -2,6 +2,8 @@
 
 ## Usage
 
+    sudo apt-get install fcgiwrap nginx git svn wget
+
 ```
 ./010-retrieve-urls-from-recipes.sh
 ./020-fetch.sh
@@ -61,10 +63,19 @@ And you can define custom upstreams according to your network condition into `pr
 
 ## Mirror Usage
 
+    rm -rf ~/.pybombs
+    pybombs recipes add gr-recipes git+http://localhost/pybombs/git/gr-recipes.git 
+    pybombs recipes add gr-etcetera git+http://localhost/pybombs/git/gr-etcetera.git 
+    mkdir gnuradio-prefix
+    cd gnuradio-prefix
+    pybombs prefix init
+    pybombs install gnuradio
+    . ./setup_env.sh
+    gnuradio-companion
 
 ## TODO
 
  - [ ] SVN fetch method
  - [ ] remove `PYBOMBS_MIRROR_ROOT_DIR`
- - [ ] add mirror usage
-
+ - [X] add mirror usage
+ - [ ] gr-recipes and gr-etcetera automatically moved to /pybombs/git/
