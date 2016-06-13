@@ -1,2 +1,4 @@
 wget+http://files.ettus.com/e4xx_images/e3xx-release-4/oecore-x86_64-armv7ahf-vfp-neon-toolchain-nodistro.0.sh
 wget+http://sourceforge.net/projects/arma/files/armadillo-4.400.1.tar.gz
+svn+https://www.cgran.org/svn/projects/gr-pocsag/trunk
+svn+http://googletest.googlecode.com/svn/trunk/
