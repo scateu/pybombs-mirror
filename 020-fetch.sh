@@ -97,6 +97,7 @@ do
 	fi
 
 
+	cd $PYBOMBS_MIRROR_ROOT_DIR
 	if [ $FETCHING_SUCCESS = true ]; then
 		echo "${ORIGIN_PYBOMBS_URL} ${MIRROR_PYBOMBS_URL}" >> recipes-mirror-replacement.urls
 		echo "${ORIGIN_PYBOMBS_URL} fetching success!"
