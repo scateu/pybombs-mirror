@@ -1,0 +1,10 @@
+svn/
+wget/
+git/
+failed.log
+failed.log.1
+*.swp
+recipes-origin/
+recipes/
+recipes-mirror-replacement.urls
+recipes-origin.urls
