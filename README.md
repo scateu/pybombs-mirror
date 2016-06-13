@@ -79,3 +79,4 @@ And you can define custom upstreams according to your network condition into `pr
  - [ ] remove `PYBOMBS_MIRROR_ROOT_DIR`
  - [X] add mirror usage
  - [ ] gr-recipes and gr-etcetera automatically moved to /pybombs/git/
+ - [ ] add travis-ci configuration
