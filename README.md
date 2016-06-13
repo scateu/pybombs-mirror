@@ -1,6 +1,6 @@
 # PyBOMBS mirror site builder
 
-usage:
+## Usage
 
 ```
 ./010-retrieve-urls-from-recipes.sh
