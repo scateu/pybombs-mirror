@@ -30,6 +30,8 @@ And you can define custom upstreams according to your network condition into `pr
  - `PYBOMBS_MIRROR_ROOT_DIR`: your working dir
  - `PYBOMBS_MIRROR_BASE_URL`: Base URL of your mirror site.
 
+ You can also set `DRY_RUN=true` to get a test drive without actually fetching data.
+
 ### Git
 
  All git repos are cloned with `--mirror` argument into `git/` subdirectory.
