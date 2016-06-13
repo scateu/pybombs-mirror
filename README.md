@@ -54,7 +54,7 @@ And you can define custom upstreams according to your network condition into `pr
 
 ## 030-replace-recipes.sh
 
- Replace URLs in `recipes/` directory using `recipes-mirror-replacement.urls`, then you can publish this directory.o
+ Replace URLs in `recipes/` directory using `recipes-mirror-replacement.urls`, then you can publish this directory to your users.
 
 
 ## Mirror Usage
