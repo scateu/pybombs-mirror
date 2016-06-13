@@ -43,14 +43,14 @@ if [ -e pre-replace-upstream.urls ]; then
 	echo
 fi
 
-cd recipes
 
 echo "===================="
-grep  -r -E "(git|svn|wget)\+.*$" * | rev |cut -d' '  -f1 |rev > ../recipes-origin.urls
+grep  -r -E "(git|svn|wget)\+.*$" recipes/ | rev |cut -d' '  -f1 |rev > recipes-origin.urls
 
 echo "recipes-origin.urls generated successfully!"
 echo "===================="
 echo 
+
 
 if [ -e ignore.urls ]; then
 	echo "===================="
@@ -61,8 +61,8 @@ if [ -e ignore.urls ]; then
 
 	cat ignore.urls | while read url
 	do
-		echo "Deleting line contains ${url}.."
-		sed -i recipes-origin.urls "\,${url},d"
+		echo "Deleting line contains ${url}"
+		sed -i "\\,${url},d" recipes-origin.urls 
 	done
 	echo "recipes-origin.urls patched!"
 	echo "===================="
