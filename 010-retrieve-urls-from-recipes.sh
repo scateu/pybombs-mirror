@@ -3,9 +3,9 @@ if [ ! -d recipes-origin ]; then
 	echo "No recipes-origin found. Fetching..."
 	mkdir recipes-origin
 	cd recipes-origin
-	echo "git clone git@github.com:gnuradio/gr-recipes.git gr-recipes"
+	echo "git clone https://github.com/gnuradio/gr-recipes.git gr-recipes"
 	git clone git@github.com:gnuradio/gr-recipes.git gr-recipes
-	echo "git clone git@github.com:gnuradio/gr-etcetera.git gr-etcetera"
+	echo "git clone https://github.com/gnuradio/gr-etcetera.git gr-etcetera"
 	git clone git@github.com:gnuradio/gr-etcetera.git gr-etcetera
 	cd ..
 else
