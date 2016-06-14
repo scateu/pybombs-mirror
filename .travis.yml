@@ -1,4 +1,3 @@
-language: general
 sudo: required
 dist: trusty
 
