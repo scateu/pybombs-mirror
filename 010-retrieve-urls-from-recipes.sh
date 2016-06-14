@@ -4,9 +4,9 @@ if [ ! -d recipes-origin ]; then
 	mkdir recipes-origin
 	cd recipes-origin
 	echo "git clone https://github.com/gnuradio/gr-recipes.git gr-recipes"
-	git clone git@github.com:gnuradio/gr-recipes.git gr-recipes
+	git clone https://github.com/gnuradio/gr-recipes.git gr-recipes
 	echo "git clone https://github.com/gnuradio/gr-etcetera.git gr-etcetera"
-	git clone git@github.com:gnuradio/gr-etcetera.git gr-etcetera
+	git clone https://github.com/gnuradio/gr-etcetera.git gr-etcetera
 	cd ..
 else
 	echo "Git updating recipes..."
