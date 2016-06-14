@@ -1,0 +1,17 @@
+language: general
+sudo: required
+dist: trusty
+
+before_install:
+  - sudo apt-get install git wget -q -y
+
+script:
+  - ./010-retrieve-urls-from-recipes.sh
+  - ./020-fetch.sh
+  - ./030-replace-recipes.sh
+
+notifications:
+  email:
+    recipients:
+      - scateu@gmail.com
+on_failure: always

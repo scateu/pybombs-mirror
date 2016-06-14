@@ -2,7 +2,7 @@
 
 DRY_RUN=false
 
-PYBOMBS_MIRROR_ROOT_DIR="/home/scateu/pybombs-mirror-site"
+PYBOMBS_MIRROR_ROOT_DIR=$(pwd)
 
 # Currently, all mirrored repo are served as http or https: 
 # like: 

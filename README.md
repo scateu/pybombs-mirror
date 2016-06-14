@@ -1,5 +1,14 @@
 # PyBOMBS mirror site builder
 
+## TODO
+
+ - [ ] SVN fetch method
+ - [X] remove `PYBOMBS_MIRROR_ROOT_DIR`
+ - [X] add mirror usage
+ - [ ] gr-recipes and gr-etcetera automatically moved to /pybombs/git/
+ - [X] add travis-ci configuration
+ - [ ] add support for multi repos.
+
 ## Usage
 
     sudo apt-get install fcgiwrap nginx git svn wget
@@ -73,10 +82,3 @@ And you can define custom upstreams according to your network condition into `pr
     . ./setup_env.sh
     gnuradio-companion
 
-## TODO
-
- - [ ] SVN fetch method
- - [ ] remove `PYBOMBS_MIRROR_ROOT_DIR`
- - [X] add mirror usage
- - [ ] gr-recipes and gr-etcetera automatically moved to /pybombs/git/
- - [ ] add travis-ci configuration
