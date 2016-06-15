@@ -20,6 +20,7 @@ cp ./40-nginx.conf /etc/nginx/sites-available/default
 sudo /etc/init.d/nginx restart
 
 sudo mkdir /pybombs
+sudo gpasswd -a yourid www-data  # then logout and in
 sudo chown www-data:www-data /pybombs
 ./50-deploy.sh
 ```
