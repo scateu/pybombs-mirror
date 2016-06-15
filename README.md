@@ -38,6 +38,38 @@ pybombs install gnuradio
 . ./setup_env.sh
 gnuradio-companion
 ```
+### PyBOMBS Update issue
+
+Unfortunately, PyBOMBS only support git as remote repo. Your *patched* recipe repos will make a complex git tree. So we don't want to mess up with a lot of git-cherry-pick git-merge or something.
+
+For now, every time we fetch recipes from upstream, we drop our previously patched commits, generate a new repo. Thus user need to do a refresh `git clone`, because the mirror recipe git repo we generated doesn't have a continous git tree.
+
+As a result, users cannot use `pybombs recipes update` directly.
+
+Instead, users can:
+
+```
+pybombs recipes remove gr-etcetera
+pybombs recipes remove gr-recipes
+
+pybombs recipes add gr-recipes git+http://yoursite.example.com/pybombs/git/gr-recipes.git 
+pybombs recipes add gr-etcetera git+http://yoursite.example.com/pybombs/git/gr-etcetera.git 
+```
+
+I think using a local directory is another option, such as:
+
+```bash
+git clone --depth=1 http://yoursite.example.com/pybombs/git/gr-recipes.git /path/to/your/git/cache
+pybombs recipes add gr-recipes /path/to/your/git/cache
+
+# Updating
+rm -rf /path/to/your/git/cache
+git clone --depth=1 http://yoursite.example.com/pybombs/git/gr-recipes.git /path/to/your/git/cache
+```
+
+Maybe there exists another git trick to help me solve this. sigh..
+
+See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00162.html>
 
 # Technical Details
 
