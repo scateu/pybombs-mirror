@@ -23,8 +23,8 @@ sudo chown www-data:www-data /pybombs
 ```
 
  - `recipe-repos.urls`: Recipes repos to be fetched.
- - *optional* `ignore.urls`: defines urls that will be ignored. Users of these URLs will be passed through upstream.
- - *optional* `pre-replace-upstream.urls` defines custom upstreams replacement. according to your network condition into to gain better speed.
+ - *(optional)* `ignore.urls`: defines urls that will be ignored. Users of these URLs will be passed through upstream.
+ - *(optional)* `pre-replace-upstream.urls` defines custom upstreams replacement. according to your network condition into to gain better speed.
 
 ## As Mirror User
 
