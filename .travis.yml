@@ -5,9 +5,9 @@ before_install:
   - sudo apt-get install git wget -q -y
 
 script:
-  - ./010-retrieve-urls-from-recipes.sh
-  - ./020-fetch.sh
-  - ./030-replace-recipes.sh
+  - ./10-retrieve-urls-from-recipes.sh
+  - DRY_RUN=true ./20-fetch.sh
+  - ./30-replace-recipes.sh
 
 notifications:
   email:

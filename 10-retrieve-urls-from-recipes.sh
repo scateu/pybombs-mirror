@@ -1,6 +1,6 @@
 #!/bin/bash
 PYBOMBS_MIRROR_ROOT_DIR=$(pwd)
-cat recipe-repos.url | while read REPO_URL REPO_NAME
+cat recipe-repos.urls | while read REPO_URL REPO_NAME
 do
 	if [ ! -d recipes-origin ]; then
 		mkdir recipes-origin

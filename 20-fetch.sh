@@ -1,6 +1,8 @@
 #!/bin/bash
 
-DRY_RUN=false  # when set to true, nothing will be fetched, for debug purpose
+if [ -z $DRY_RUN ]; then
+	DRY_RUN=false  # when set to true, nothing will be fetched, for debug purpose
+fi
 
 PYBOMBS_MIRROR_ROOT_DIR=$(pwd)
 
