@@ -1,6 +1,6 @@
 # PyBOMBS mirror site builder
 
-![Travis-CI Badge](https://travis-ci.org/scateu/pybombs-mirror.svg)
+[![Build Status](https://travis-ci.org/scateu/pybombs-mirror.svg?branch=master)](https://travis-ci.org/scateu/pybombs-mirror)
 
 ## As Mirror Maintainer
 
