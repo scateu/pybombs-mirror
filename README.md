@@ -1,5 +1,7 @@
 # PyBOMBS mirror site builder
 
+![Travis-CI Badge](https://travis-ci.org/scateu/pybombs-mirror.svg)
+
 ## As Mirror Maintainer
 
 ```bash
