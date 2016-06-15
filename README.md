@@ -69,7 +69,7 @@ git clone --depth=1 http://yoursite.example.com/pybombs/git/gr-recipes.git /path
 
 Maybe there exists another git trick to help me solve this. sigh..
 
-See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00162.html>
+See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.html>
 
 # Technical Details
 
