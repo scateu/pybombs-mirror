@@ -1,16 +1,6 @@
 # PyBOMBS mirror site builder
 
-## TODO
-
- - [ ] SVN fetch method
- - [X] remove `PYBOMBS_MIRROR_ROOT_DIR`
- - [X] add mirror usage
- - [X] auto deploy: gr-recipes and gr-etcetera automatically moved to /pybombs/git/
- - [X] add travis-ci configuration
- - [X] add support for multi repos.
-
 ## As Mirror Maintainer
-
 
 ```bash
 sudo apt-get install fcgiwrap nginx git svn wget
@@ -101,4 +91,11 @@ $ DRY_RUN=true ./20-fetch.sh
  Replace URLs in `recipes/` directory using `recipes-mirror-replacement.urls`, then you can publish this directory to your users.
 
 
+## TODO
 
+ - [ ] SVN fetch method
+ - [X] remove `PYBOMBS_MIRROR_ROOT_DIR`
+ - [X] add mirror usage
+ - [X] auto deploy: gr-recipes and gr-etcetera automatically moved to /pybombs/git/
+ - [X] add travis-ci configuration
+ - [X] add support for multi repos.
