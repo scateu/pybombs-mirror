@@ -9,7 +9,7 @@
  - [X] add travis-ci configuration
  - [X] add support for multi repos.
 
-## Usage
+## As Mirror Maintainer
 
 
 ```bash
@@ -35,6 +35,21 @@ You can add ignored urls into `ignore.urls`.
 
 And you can define custom upstreams according to your network condition into `pre-replace-upstream.urls` to gain better speed.
 
+## As Mirror User
+
+```bash
+rm -rf ~/.pybombs
+pybombs recipes add gr-recipes git+http://localhost/pybombs/git/gr-recipes.git 
+pybombs recipes add gr-etcetera git+http://localhost/pybombs/git/gr-etcetera.git 
+mkdir gnuradio-prefix
+cd gnuradio-prefix
+pybombs prefix init
+pybombs install gnuradio
+. ./setup_env.sh
+gnuradio-companion
+```
+
+# Technical Details
 
 ## 10-retrieve-urls-from-recipes.sh
 
@@ -86,15 +101,4 @@ $ DRY_RUN=true ./20-fetch.sh
  Replace URLs in `recipes/` directory using `recipes-mirror-replacement.urls`, then you can publish this directory to your users.
 
 
-## Mirror Usage
-
-    rm -rf ~/.pybombs
-    pybombs recipes add gr-recipes git+http://localhost/pybombs/git/gr-recipes.git 
-    pybombs recipes add gr-etcetera git+http://localhost/pybombs/git/gr-etcetera.git 
-    mkdir gnuradio-prefix
-    cd gnuradio-prefix
-    pybombs prefix init
-    pybombs install gnuradio
-    . ./setup_env.sh
-    gnuradio-companion
 
