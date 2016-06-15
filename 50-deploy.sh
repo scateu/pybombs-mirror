@@ -37,11 +37,11 @@ do
 done
 
 #RSYNC_PARAM="rsync -av --no-perms --no-owner --no-group --delete"
-RSYNC_PARAM="rsync -prv --delete"
+RSYNC_PARAM="-prv --delete"
 
-$RSYNC_PARAM git/ ${PYBOMBS_SITE_BASE}/git/
-$RSYNC_PARAM wget/ ${PYBOMBS_SITE_BASE}/wget/
-$RSYNC_PARAM svn/ ${PYBOMBS_SITE_BASE}/svn/
-$RSYNC_PARAM _recipes_bare/ ${PYBOMBS_SITE_BASE}/recipes/
+rsync $RSYNC_PARAM git/ ${PYBOMBS_SITE_BASE}/git/
+rsync $RSYNC_PARAM wget/ ${PYBOMBS_SITE_BASE}/wget/
+rsync $RSYNC_PARAM svn/ ${PYBOMBS_SITE_BASE}/svn/
+rsync $RSYNC_PARAM _recipes_bare/ ${PYBOMBS_SITE_BASE}/recipes/
 
 echo "maybe you need to : sudo chown -R www-data:www-data ${PYBOMBS_SITE_BASE}"
