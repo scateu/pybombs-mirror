@@ -8,3 +8,4 @@ recipes-origin/
 recipes/
 recipes-mirror-replacement.urls
 recipes-origin.urls
+_recipes-mirror-replacement.urls

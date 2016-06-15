@@ -1,15 +1,9 @@
 #!/bin/bash
 
-DRY_RUN=false
+DRY_RUN=false  # when set to true, nothing will be fetched, for debug purpose
 
 PYBOMBS_MIRROR_ROOT_DIR=$(pwd)
 
-# Currently, all mirrored repo are served as http or https: 
-# like: 
-# 	git+http, svn+http, wget+http
-# or:
-# 	git+https, svn+https, wget+https
-PYBOMBS_MIRROR_BASE_URL="http://localhost/pybombs" # *NO* tailing / should be added.
 
 
 if [ ! -e recipes-origin.urls ]; then 
@@ -49,7 +43,7 @@ do
 	TARGET_PATH="./$protocol/$(basename $url)"
 
 	echo "UPSTREAM: $url"
-	MIRROR_PYBOMBS_URL="${protocol}+${PYBOMBS_MIRROR_BASE_URL}/${protocol}/$(basename $url)"
+	MIRROR_PYBOMBS_URL="${protocol}+PYBOMBS_MIRROR_BASE_URL/${protocol}/$(basename $url)"
 	echo "MIRROR_PYBOMBS_URL: ${MIRROR_PYBOMBS_URL}"
 
 
@@ -99,7 +93,7 @@ do
 
 	cd $PYBOMBS_MIRROR_ROOT_DIR
 	if [ $FETCHING_SUCCESS = true ]; then
-		echo "${ORIGIN_PYBOMBS_URL} ${MIRROR_PYBOMBS_URL}" >> recipes-mirror-replacement.urls
+		echo "${ORIGIN_PYBOMBS_URL} ${MIRROR_PYBOMBS_URL}" >> _recipes-mirror-replacement.urls
 		echo "${ORIGIN_PYBOMBS_URL} fetching success!"
 	else
 		echo "${ORIGIN_PYBOMBS_URL}" >> failed.log
