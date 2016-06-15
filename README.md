@@ -92,25 +92,15 @@ See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.h
 $ DRY_RUN=true ./20-fetch.sh
 ```
 
-### Git
+ - Git: All git repos are cloned with `--mirror` argument into `git/` subdirectory.
+ - Wget: All wget URLs are fetch into `wget/` subdirectory with 3 max tries. Files are stored without directory hierarchy.
+ - SVN: All svn repos are cloned into `svn/` subdirectory.
 
- All git repos are cloned with `--mirror` argument into `git/` subdirectory.
+ - Failure: Any failure will be logged in `failed.log`.
 
-### Wget
+**Output**
 
- All wget URLs are fetch into `wget/` subdirectory with 3 max tries. Files are stored without directory hierarchy.
-
-### SVN
-
- All svn repos are cloned into `svn/` subdirectory.
-
-### Failure
-
- Any failure will be logged in `failed.log`.
-
-### Output
-
- Then it will generate a `recipes-mirror-replacement.urls` list:
+ This script will generate a `recipes-mirror-replacement.urls` list containing:
 
     <ORIGIN_PYBOMBS_URL>  <MIRROR_PYBOMBS_URL>
 
