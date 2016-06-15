@@ -89,6 +89,7 @@ do
 
 		if [ ! $DRY_RUN = true ]; then
 			echo "TODO"
+			FETCHING_SUCCESS=false
 		fi
 	fi
 
