@@ -4,7 +4,7 @@ if [ -z $DRY_RUN ]; then
 	DRY_RUN=false  # when set to true, nothing will be fetched, for debug purpose
 fi
 
-PYBOMBS_MIRROR_ROOT_DIR=$(pwd)
+PYBOMBS_MIRROR_WORK_DIR=$(pwd)
 
 
 
@@ -37,8 +37,8 @@ fi
 
 cat recipes-origin.urls | sed 's/+/ /' | while read protocol url
 do 
-	echo "ENTERING: $PYBOMBS_MIRROR_ROOT_DIR"
-	cd $PYBOMBS_MIRROR_ROOT_DIR
+	echo "ENTERING: $PYBOMBS_MIRROR_WORK_DIR"
+	cd $PYBOMBS_MIRROR_WORK_DIR
 
 	ORIGIN_PYBOMBS_URL="$protocol+$url"
 	echo "ORGIGIN_PYBOMBS_URL: $ORIGIN_PYBOMBS_URL"
@@ -93,7 +93,7 @@ do
 	fi
 
 
-	cd $PYBOMBS_MIRROR_ROOT_DIR
+	cd $PYBOMBS_MIRROR_WORK_DIR
 	if [ $FETCHING_SUCCESS = true ]; then
 		echo "${ORIGIN_PYBOMBS_URL} ${MIRROR_PYBOMBS_URL}" >> _recipes-mirror-replacement.urls
 		echo "${ORIGIN_PYBOMBS_URL} fetching success!"

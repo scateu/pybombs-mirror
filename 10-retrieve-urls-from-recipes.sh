@@ -1,5 +1,5 @@
 #!/bin/bash
-PYBOMBS_MIRROR_ROOT_DIR=$(pwd)
+PYBOMBS_MIRROR_WORK_DIR=$(pwd)
 cat recipe-repos.urls | while read REPO_URL REPO_NAME
 do
 	if [ ! -d recipes-origin ]; then
@@ -18,7 +18,7 @@ do
 		git pull
 	fi
 
-	cd ${PYBOMBS_MIRROR_ROOT_DIR}
+	cd ${PYBOMBS_MIRROR_WORK_DIR}
 done
 
 
