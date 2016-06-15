@@ -13,9 +13,9 @@ if [ ! -e recipes-origin.urls ]; then
 	exit -1
 fi
 
-if [ -e recipes-mirror-replacement.urls ]; then
-	echo "Previous recipes-mirror-replacement.urls exists, purge it."
-	rm recipes-mirror-replacement.urls
+if [ -e _recipes-mirror-replacement.urls ]; then
+	echo "Previous _recipes-mirror-replacement.urls exists, purge it."
+	rm _recipes-mirror-replacement.urls
 fi
 
 if [ ! -d git ]; then 
@@ -42,46 +42,51 @@ do
 
 	ORIGIN_PYBOMBS_URL="$protocol+$url"
 	echo "ORGIGIN_PYBOMBS_URL: $ORIGIN_PYBOMBS_URL"
-	TARGET_PATH="./$protocol/$(basename $url)"
+	TARGET_PATH="$protocol/$(basename $url)"
+
+	# If duplication of name like  git+git://git.code.sf.net/p/openlte/code --> code happens
+	# You can use the following name scheme (Not beautiful... indeed...)
+
+	#TARGET_PATH="$protocol/$(basename $(dirname $url))_$(basename $url)"
 
 	echo "UPSTREAM: $url"
-	MIRROR_PYBOMBS_URL="${protocol}+PYBOMBS_MIRROR_BASE_URL/${protocol}/$(basename $url)"
+	MIRROR_PYBOMBS_URL="${protocol}+PYBOMBS_MIRROR_BASE_URL/${TARGET_PATH}"
 	echo "MIRROR_PYBOMBS_URL: ${MIRROR_PYBOMBS_URL}"
 
 
 	FETCHING_SUCCESS=true #predefine status
 	if [ $protocol = "wget" ]; then
-		if [ -e $TARGET_PATH ]; then
-			echo "$TARGET_PATH exists, skipping"
+		if [ -e ./$TARGET_PATH ]; then
+			echo "./$TARGET_PATH exists, skipping"
 		else
-			if [ -e ${TARGET_PATH}.tmp ]; then
-				echo "${TARGET_PATH}.tmp exists.. remove it."
-				rm ${TARGET_PATH}.tmp 
+			if [ -e ./${TARGET_PATH}.tmp ]; then
+				echo "./${TARGET_PATH}.tmp exists.. remove it."
+				rm ./${TARGET_PATH}.tmp 
 			fi
-			echo "EXECUTING: wget $url -O ${TARGET_PATH}.tmp"
+			echo "EXECUTING: wget $url -O ./${TARGET_PATH}.tmp"
 			if [ ! $DRY_RUN = true ]; then
-				wget $url --tries=3 -O ${TARGET_PATH}.tmp
+				wget $url --tries=3 -O ./${TARGET_PATH}.tmp
 				if [ $? -eq 0 ]; then
-					echo "Fetching done. Renaming ${TARGET_PATH}.tmp to ${TARGET_PATH}"
-					mv ${TARGET_PATH}.tmp ${TARGET_PATH}
+					echo "Fetching done. Renaming ./${TARGET_PATH}.tmp to ./${TARGET_PATH}"
+					mv ./${TARGET_PATH}.tmp ./${TARGET_PATH}
 				else
 					FETCHING_SUCCESS=false
 				fi
 			fi
 		fi
 	elif [ $protocol = "git" ]; then
-		if [ -d $TARGET_PATH ]; then
-			echo "$TARGET_PATH exists, syncing"
-			cd $TARGET_PATH
+		if [ -d ./$TARGET_PATH ]; then
+			echo "./$TARGET_PATH exists, syncing"
+			cd ./$TARGET_PATH
 			
 			if [ ! $DRY_RUN = true ]; then
 				/usr/bin/timeout -s INT 3600 git remote -v update || FETCHING_SUCCESS=false
 				git repack -a -d
 			fi
 		else
-			echo "EXECUTING: git clone --mirror $url $TARGET_PATH"
+			echo "EXECUTING: git clone --mirror $url ./$TARGET_PATH"
 			if [ ! $DRY_RUN = true ]; then
-				git clone --mirror $url $TARGET_PATH || FETCHING_SUCCESS=false
+				git clone --mirror $url ./$TARGET_PATH || FETCHING_SUCCESS=false
 			fi
 		fi
 	elif [ $protocol = "svn" ]; then
