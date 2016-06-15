@@ -1,24 +1,25 @@
 #!/bin/bash
-if [ ! -d recipes-origin ]; then
-	echo "No recipes-origin found. Fetching..."
-	mkdir recipes-origin
-	cd recipes-origin
-	echo "git clone https://github.com/gnuradio/gr-recipes.git gr-recipes"
-	git clone https://github.com/gnuradio/gr-recipes.git gr-recipes
-	echo "git clone https://github.com/gnuradio/gr-etcetera.git gr-etcetera"
-	git clone https://github.com/gnuradio/gr-etcetera.git gr-etcetera
-	cd ..
-else
-	echo "Git updating recipes..."
-	cd recipes-origin/gr-etcetera/
-	echo "Updating gr-etcetera"
-	git pull
-	cd ../..
-	echo "Updating gr-recipes"
-	cd recipes-origin/gr-recipes/
-	git pull
-	cd ../../
-fi
+PYBOMBS_MIRROR_ROOT_DIR=$(pwd)
+cat recipe-repos.url | while read REPO_URL REPO_NAME
+do
+	if [ ! -d recipes-origin ]; then
+		mkdir recipes-origin
+	fi
+
+	if [ ! -d recipes-origin/${REPO_NAME} ]; then
+		echo "No recipes-origin/${REPO_NAME} found. Fetching..."
+		cd recipes-origin/
+		echo "git clone ${REPO_URL} ${REPO_NAME}"
+		git clone ${REPO_URL} ${REPO_NAME}
+	else
+		echo "Git updating recipes..."
+		cd recipes-origin/${REPO_NAME}
+		echo "Updating ${REPO_NAME}"
+		git pull
+	fi
+
+	cd ${PYBOMBS_MIRROR_ROOT_DIR}
+done
 
 
 if [ -d recipes ]; then
