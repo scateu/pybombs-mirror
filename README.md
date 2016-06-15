@@ -22,9 +22,9 @@ sudo chown www-data:www-data /pybombs
 ./50-deploy.sh
 ```
 
- - `recipe-repos.urls`: Recipes repos to be fetched.
- - *(optional)* `ignore.urls`: defines urls that will be ignored. Users of these URLs will be passed through upstream.
- - *(optional)* `pre-replace-upstream.urls`:defines custom upstreams replacement. In order to gain better syncing speed according to your network condition.
+ - `recipe-repos.urls` Recipes repos to be fetched.
+ - *(optional)* `ignore.urls` defines urls that will be ignored. Users of these URLs will be passed through upstream.
+ - *(optional)* `pre-replace-upstream.urls` defines custom upstreams replacement. In order to gain better syncing speed according to your network condition.
 
 ## As Mirror User
 
