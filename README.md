@@ -112,6 +112,14 @@ $ DRY_RUN=true ./20-fetch.sh
  Replace URLs in `recipes/` directory using `recipes-mirror-replacement.urls`, then you can publish this directory to your users.
 
 
+## Build a PyBOMBS totally from upstream PyBOMBS mirror
+
+```
+wget http://mirrors.tuna.tsinghua.edu.cn/pybombs/recipes-mirror-replacement.urls -O pre-replace-upstream.urls
+```
+
+It's very convenient to choose a upstream mirror site with stable network speed.
+
 ## TODO
 
  - [ ] SVN fetch method
