@@ -29,8 +29,8 @@ And you can define custom upstreams according to your network condition into `pr
 
 ```bash
 rm -rf ~/.pybombs
-pybombs recipes add gr-recipes git+http://localhost/pybombs/git/gr-recipes.git 
-pybombs recipes add gr-etcetera git+http://localhost/pybombs/git/gr-etcetera.git 
+pybombs recipes add gr-recipes git+http://yoursite.example.com/pybombs/git/gr-recipes.git 
+pybombs recipes add gr-etcetera git+http://yoursite.example.com/pybombs/git/gr-etcetera.git 
 mkdir gnuradio-prefix
 cd gnuradio-prefix
 pybombs prefix init
