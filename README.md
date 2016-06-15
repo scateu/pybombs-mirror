@@ -120,6 +120,18 @@ wget http://mirrors.tuna.tsinghua.edu.cn/pybombs/recipes-mirror-replacement.urls
 
 It's very convenient to choose a upstream mirror site with stable network speed.
 
+## Change a URL to another URL while your mirror site don't want to fetch it
+
+1. Add that URL replacement pair into `pre-replace-upstream.urls`
+2. Add the latter URL into `ignore.urls`
+
+For example:
+
+```bash
+echo "wget+https://download.qt.io/archive/qt/4.6/qt-everywhere-opensource-src-4.6.2.tar.gz  wget+http://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/4.6/qt-everywhere-opensource-src-4.6.2.tar.gz" >> pre-replace-upstream.urls
+echo "wget+http://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/4.6/qt-everywhere-opensource-src-4.6.2.tar.gz" >> ignore.urls
+```
+
 ## TODO
 
  - [ ] SVN fetch method
