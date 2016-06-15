@@ -7,7 +7,7 @@ before_install:
 script:
   - ./10-retrieve-urls-from-recipes.sh
   - DRY_RUN=true ./20-fetch.sh
-  - ./30-replace-recipes.sh
+  - PYBOMBS_MIRROR_BASE_URL="http://mirrors.tuna.tsinghua.edu.cnm/pybombs" ./30-replace-recipes.sh
 
 notifications:
   email:
