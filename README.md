@@ -5,18 +5,28 @@
  - [ ] SVN fetch method
  - [X] remove `PYBOMBS_MIRROR_ROOT_DIR`
  - [X] add mirror usage
- - [ ] auto deploy: gr-recipes and gr-etcetera automatically moved to /pybombs/git/
+ - [X] auto deploy: gr-recipes and gr-etcetera automatically moved to /pybombs/git/
  - [X] add travis-ci configuration
  - [X] add support for multi repos.
 
 ## Usage
 
-    sudo apt-get install fcgiwrap nginx git svn wget
 
-```
+```bash
+sudo apt-get install fcgiwrap nginx git svn wget
+
 ./10-retrieve-urls-from-recipes.sh
 ./20-fetch.sh
+
+export PYBOMBS_MIRROR_BASE_URL="http://yoursite.example.com/pybombs"
 ./30-replace-recipes.sh
+
+cp ./40-nginx.conf /etc/nginx/sites-available/default
+sudo /etc/init.d/nginx restart
+
+sudo mkdir /pybombs
+sudo chown www-data:www-data /pybombs
+./50-deploy.sh
 ```
 
 Recipes repos that you'd like to mirror are placed in `recipe-repos.urls`.
