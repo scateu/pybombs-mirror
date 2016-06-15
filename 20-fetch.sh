@@ -70,7 +70,6 @@ do
 			fi
 		fi
 	elif [ $protocol = "git" ]; then
-		echo "git clone --mirror $url $TARGET_PATH"
 		if [ -d $TARGET_PATH ]; then
 			echo "$TARGET_PATH exists, syncing"
 			cd $TARGET_PATH
