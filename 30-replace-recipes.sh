@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Currently, all mirrored repo are served through http or https: 
+# Currently, all mirrored repos are served through http or https: 
 # like: 
 # 	git+http, svn+http, wget+http
 # or:
