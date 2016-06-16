@@ -231,19 +231,19 @@ do
 	
 done
 
-#30-replace-_recipes:
+#30-replace-recipes:
 #=============
 
 require_file_existance ${_DIR}/_recipes-mirror-replacement.urls 
 require_directory_existance ${_DIR}/_recipes
 
-echo "Replacing PYBOMBS_MIRROR_BASE_URL with ${PYBOMBS_MIRROR_BASE_URL} in _recipes-mirror-replacement.urls .."
-cp ${_DIR}/_recipes-mirror-replacement.urls ${_DIR}/_recipes-mirror-replacement.urls 
-sed -i "s,PYBOMBS_MIRROR_BASE_URL,${PYBOMBS_MIRROR_BASE_URL},g" _recipes-mirror-replacement.urls
+echo "Replacing PYBOMBS_MIRROR_BASE_URL with ${PYBOMBS_MIRROR_BASE_URL} in recipes-mirror-replacement.urls .."
+cp ${_DIR}/_recipes-mirror-replacement.urls ${_DIR}/recipes-mirror-replacement.urls 
+sed -i "s,PYBOMBS_MIRROR_BASE_URL,${PYBOMBS_MIRROR_BASE_URL},g" ${_DIR}/recipes-mirror-replacement.urls
 echo "Done."
 
 
-cat ${_DIR}/_recipes-mirror-replacement.urls | while read origin new
+cat ${_DIR}/recipes-mirror-replacement.urls | while read origin new
 do
 	echo "${origin} --> ${new}"
 	grep -rl "${origin}" ${_DIR}/_recipes/ |grep -v \.git |xargs -r sed -i "s,${origin},${new},g" 
@@ -272,6 +272,7 @@ do
 	git clone --mirror ${_DIR}/_recipes/${REPO_NAME} ${_DIR}/recipes/${REPO_NAME}.git
 done
 
+exit 0
 echo "Cleaning up"
 
 delete_file_if_exist ${_DIR}/_recipes-mirror-replacement.urls
