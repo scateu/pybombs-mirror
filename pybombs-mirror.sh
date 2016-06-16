@@ -323,3 +323,5 @@ do
 	echo "    pybombs recipes remove ${REPO_NAME}" >> ${_DIR}/README.txt
 	echo "    pybombs recipes add ${REPO_NAME} git+${PYBOMBS_MIRROR_BASE_URL}/recipes/${REPO_NAME}.git" >> ${_DIR}/README.txt
 done
+
+echo " Built with https://github.com/scateu/pybombs-mirror" >> ${_DIR}/README.txt
