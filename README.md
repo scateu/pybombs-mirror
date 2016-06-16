@@ -166,7 +166,7 @@ $ DRY_RUN=true ./20-fetch.sh
  Replace URLs in `recipes/` directory using `recipes-mirror-replacement.urls`, then you can publish this directory to your users.
 
 
-## Build a PyBOMBS totally from upstream PyBOMBS mirror
+## Build a PyBOMBS mirror totally from another PyBOMBS mirror
 
 ```
 wget http://mirrors.tuna.tsinghua.edu.cn/pybombs/pre-replace-upstream.urls -O 1.urls
@@ -179,7 +179,7 @@ It's very convenient to choose a upstream mirror site with stable network speed.
 ## Change a URL to another URL while your mirror site don't want to fetch it
 
 1. Add that URL replacement pair into `pre-replace-upstream.urls`
-2. Add the latter URL into `ignore.urls`
+2. Add latter URL into `ignore.urls`
 
 For example:
 
