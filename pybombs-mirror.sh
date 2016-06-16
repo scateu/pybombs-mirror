@@ -273,6 +273,7 @@ done
 echo "Cleaning up"
 
 delete_file_if_exist ${PYBOMBS_MIRROR_WORK_DIR}/_recipes-mirror-replacement.urls
+delete_directory_if_exist ${PYBOMBS_MIRROR_WORK_DIR}/_recipes
 
 
 echo "maybe you need to : sudo chown -R www-data:www-data ${PYBOMBS_SITE_BASE}"

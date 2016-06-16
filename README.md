@@ -78,7 +78,7 @@ See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.h
 
 ```
 
-10-retrieve-urls-from-_recipes....................................................
+10-retrieve-urls-from-recipes....................................................
 
                                  Upstream recipes
                                        |
@@ -115,7 +115,7 @@ pre-replace-upstream.urls    ---->     +
        _recipes-mirror-replacement.urls     failed.log
 (PYBOMBS_MIRROR_BASE_URL as placeholder)
                                 |
-30-replace-_recipes..............|................................................
+30-replace-_recipes.............|................................................
                                 |
                      [sed] PYBOMBS_MIRROR_BASE_URL -> $PYBOMBS_MIRROR_BASE_URL
                                 |
