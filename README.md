@@ -7,12 +7,19 @@
 ```bash
 sudo apt-get install fcgiwrap nginx git svn wget
 
-# Or test drive without actually fetching
-# DRY_RUN=true ./20-fetch.sh
+
+sudo mkdir /pybombs
+sudo gpasswd -a yourid www-data  # then logout and in
+sudo chown www-data:www-data /pybombs
 
 export PYBOMBS_MIRROR_BASE_URL="http://yoursite.example.com/pybombs"
-export DRY_RUN=true 
-export PYBOMBS_MIRROR_WORK_DIR=/home/scateu/pybombs-mirror-site
+export DRY_RUN=false 
+#export DRY_RUN=true  # Or test drive without actually fetching with DRY_RUN=true
+export PYBOMBS_MIRROR_WORK_DIR=/pybombs
+
+cp upstream-recipe-repos.urls ${PYBOMBS_MIRROR_WORK_DIR}/
+cp pre-replace-upstream.urls ${PYBOMBS_MIRROR_WORK_DIR}/
+cp ignore.urls ${PYBOMBS_MIRROR_WORK_DIR}/
 
 ./pybombs-mirror.sh
 
@@ -20,9 +27,6 @@ cp ./nginx.conf /etc/nginx/sites-available/default
 
 sudo /etc/init.d/nginx restart
 
-sudo mkdir /pybombs
-sudo gpasswd -a yourid www-data  # then logout and in
-sudo chown www-data:www-data /pybombs
 ```
  - `upstream-recipe-repos.urls` Recipes repos to be fetched.
  - *(optional)* `ignore.urls` defines urls that will be ignored. Users of these URLs will be passed through upstream.
