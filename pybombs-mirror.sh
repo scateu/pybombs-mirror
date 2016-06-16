@@ -278,6 +278,6 @@ delete_file_if_exist ${_DIR}/_recipes-mirror-replacement.urls
 delete_directory_if_exist ${_DIR}/_recipes
 
 
-echo "maybe you need to : sudo chown -R www-data:www-data ${PYBOMBS_SITE_BASE}"
+echo "maybe you need to : sudo chown -R www-data:www-data ${_DIR}"
 
 cd ${_DIR}
