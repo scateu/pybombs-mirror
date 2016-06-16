@@ -114,7 +114,7 @@ pre-replace-upstream.urls    ---->     +
                                 |
 30-replace-recipes.sh...........|................................................
                                 |
-                              [sed]
+                     [sed] PYBOMBS_MIRROR_BASE_URL -> $PYBOMBS_MIRROR_BASE_URL
                                 |
                                 v
         recipes-mirror-replacement.urls -- [sed] --> recipes/
