@@ -37,7 +37,8 @@ if [ -e pre-replace-upstream.urls ]; then
 	cat pre-replace-upstream.urls | while read origin new
 	do
 		echo "Replacing ${origin} with ${new}"
-		find ./recipes/ -name \*.lwr -exec sed -i "s,${origin},${new},g" {} \;
+#		find ./recipes/ -name \*.lwr -exec sed -i "s,${origin},${new},g" {} \;
+		grep -rl "${origin}" ./recipes/ |grep -v \.git |xargs -r sed -i "s,${origin},${new},g" 
 	done
 	echo "Patching recipes done!"
 	echo "===================="

@@ -1,1 +1,2 @@
 git+git://git.osmocom.org/osmo-tetra.git git+https://github.com/osmocom/osmo-tetra.git
+wget+http://aptproxy.willowgarage.com/archive.ubuntu.com/ubuntu/pool/universe/m/mcpp/mcpp_2.7.2.orig.tar.gz wget+http://mirror-fpt-telecom.fpt.net/ubuntu/pool/universe/m/mcpp/mcpp_2.7.2.orig.tar.gz

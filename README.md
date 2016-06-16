@@ -77,6 +77,69 @@ See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.h
 
 # Technical Details
 
+```
+
+10-retrieve-urls-from-recipes.sh.................................................
+
+   recipe-repos.urls     -->    recipes-origin/
+                                       |
+                                       | [Copy]
+                                       |
+                                       v
+                                    recipes/
+                                       |
+pre-replace-upstream.urls    ---->     +
+                                       |
+                                       | [grep & sed]
+                                       |
+                                       v
+                                    recipes/
+                                       |
+                                       | [grep]
+                                       |
+                                       v
+                               recipes-origin.urls
+                                       |
+     ignore.urls             ---->     +
+                                       |
+                                       | [sed]
+                                       |
+                                       v
+                               recipes-origin.urls
+                                       |
+20-fetch.sh............................|.........................................
+                                       |             +--> svn/
+                                       v             |
+                                    [Fetch..] -------+--> wget/
+                                       |             |
+                                +------+------+      +--> git/
+                                |             | 
+                                |             | 
+                                V             V 
+       _recipes-mirror-replacement.urls     failed.log
+(PYBOMBS_MIRROR_BASE_URL as placeholder)
+                                |
+30-replace-recipes.sh...........|................................................
+                                |
+                              [sed]
+                                |
+                                |
+                                v
+        recipes-mirror-replacement.urls -- [sed] --> recipes/
+                                                        |
+50-deploy.sh............................................|........................
+                                                        |
+                                                        | [git clone --bare]
+                                                        v
+                                                   _recipes_bare/
+                                                        |
+                                                        | [rsync]
+                                                        v
+                                                       DONE. 
+
+```
+
+
 ## 10-retrieve-urls-from-recipes.sh
 
  - git clone or update repos in `recipe-repos.urls` from upstream into `recipes-origin` directory.
@@ -115,7 +178,9 @@ $ DRY_RUN=true ./20-fetch.sh
 ## Build a PyBOMBS totally from upstream PyBOMBS mirror
 
 ```
-wget http://mirrors.tuna.tsinghua.edu.cn/pybombs/recipes-mirror-replacement.urls -O pre-replace-upstream.urls
+wget http://mirrors.tuna.tsinghua.edu.cn/pybombs/pre-replace-upstream.urls -O 1.urls
+wget http://mirrors.tuna.tsinghua.edu.cn/pybombs/recipes-mirror-replacement.urls -O 2.urls
+cat 1.urls 2.urls > pre-replace-upstream.urls
 ```
 
 It's very convenient to choose a upstream mirror site with stable network speed.
