@@ -42,12 +42,12 @@ do
 
 	ORIGIN_PYBOMBS_URL="$protocol+$url"
 	echo "ORGIGIN_PYBOMBS_URL: $ORIGIN_PYBOMBS_URL"
-	TARGET_PATH="$protocol/$(basename $url)"
+	#TARGET_PATH="$protocol/$(basename $url)"
 
 	# If duplication of name like  git+git://git.code.sf.net/p/openlte/code --> code happens
 	# You can use the following name scheme (Not beautiful... indeed...)
 
-	#TARGET_PATH="$protocol/$(basename $(dirname $url))_$(basename $url)"
+	TARGET_PATH="$protocol/$(basename $(dirname $url))_$(basename $url)"
 
 	echo "UPSTREAM: $url"
 	MIRROR_PYBOMBS_URL="${protocol}+PYBOMBS_MIRROR_BASE_URL/${TARGET_PATH}"
