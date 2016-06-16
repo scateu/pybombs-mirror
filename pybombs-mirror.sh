@@ -281,3 +281,43 @@ delete_directory_if_exist ${_DIR}/_recipes
 echo "maybe you need to : sudo chown -R www-data:www-data ${_DIR}"
 
 cd ${_DIR}
+
+echo "Generating README.txt....."
+
+require_file_existance ${_DIR}/upstream-recipe-repos.urls
+
+cat > ${_DIR}/README.txt <<EOF
+
+PyBOMBS Mirror Site
+
+Example Usage
+==============
+
+    sudo pip install pybombs
+    rm -rf ~/.pybombs
+EOF
+
+cat ${_DIR}/upstream-recipe-repos.urls | while read REPO_URL REPO_NAME
+do
+	echo "    pybombs recipes add ${REPO_NAME} git+${PYBOMBS_MIRROR_BASE_URL}/pybombs/git/${REPO_NAME}.git" >> ${_DIR}/README.txt
+done
+
+cat >> ${_DIR}/README.txt <<EOF
+    mkdir gnuradio-prefix
+    cd gnuradio-prefix
+    pybombs prefix init
+    pybombs install gnuradio
+    . ./setup_env.sh
+    gnuradio-companion
+
+
+Update
+=======
+
+EOF
+
+cat ${_DIR}/upstream-recipe-repos.urls | while read REPO_URL REPO_NAME
+do
+	echo "    pybombs recipes remove ${REPO_NAME}" >> ${_DIR}/README.txt
+	echo "    pybombs recipes add ${REPO_NAME} git+${PYBOMBS_MIRROR_BASE_URL}/pybombs/git/${REPO_NAME}.git" >> ${_DIR}/README.txt
+done
