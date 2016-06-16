@@ -84,26 +84,20 @@ See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.h
    recipe-repos.urls     -->    recipes-origin/
                                        |
                                        | [Copy]
-                                       |
                                        v
                                     recipes/
                                        |
 pre-replace-upstream.urls    ---->     +
-                                       |
                                        | [grep & sed]
-                                       |
                                        v
                                     recipes/
                                        |
                                        | [grep]
-                                       |
                                        v
                                recipes-origin.urls
                                        |
      ignore.urls             ---->     +
-                                       |
                                        | [sed]
-                                       |
                                        v
                                recipes-origin.urls
                                        |
@@ -114,7 +108,6 @@ pre-replace-upstream.urls    ---->     +
                                        |             |
                                 +------+------+      +--> git/
                                 |             | 
-                                |             | 
                                 V             V 
        _recipes-mirror-replacement.urls     failed.log
 (PYBOMBS_MIRROR_BASE_URL as placeholder)
@@ -123,12 +116,11 @@ pre-replace-upstream.urls    ---->     +
                                 |
                               [sed]
                                 |
-                                |
                                 v
         recipes-mirror-replacement.urls -- [sed] --> recipes/
                                                         |
 50-deploy.sh............................................|........................
-                                                        |
+                                                        | [git commit -am  ]
                                                         | [git clone --bare]
                                                         v
                                                    _recipes_bare/
@@ -136,7 +128,6 @@ pre-replace-upstream.urls    ---->     +
                                                         | [rsync]
                                                         v
                                                        DONE. 
-
 ```
 
 
