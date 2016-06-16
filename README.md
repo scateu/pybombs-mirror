@@ -7,25 +7,27 @@
 ```bash
 sudo apt-get install fcgiwrap nginx git svn wget
 
-./10-retrieve-urls-from-recipes.sh
-./20-fetch.sh
-
-# Or test drive without actually fetching
-# DRY_RUN=true ./20-fetch.sh
-
-export PYBOMBS_MIRROR_BASE_URL="http://yoursite.example.com/pybombs"
-./30-replace-recipes.sh
-
-cp ./40-nginx.conf /etc/nginx/sites-available/default
-sudo /etc/init.d/nginx restart
-
 sudo mkdir /pybombs
 sudo gpasswd -a yourid www-data  # then logout and in
 sudo chown www-data:www-data /pybombs
-./50-deploy.sh
-```
 
- - `recipe-repos.urls` Recipes repos to be fetched.
+export PYBOMBS_MIRROR_BASE_URL="http://yoursite.example.com/pybombs"
+export DRY_RUN=false 
+#export DRY_RUN=true  # Or test drive without actually fetching with DRY_RUN=true
+export PYBOMBS_MIRROR_WORK_DIR=/pybombs
+
+cp upstream-recipe-repos.urls ${PYBOMBS_MIRROR_WORK_DIR}/
+cp pre-replace-upstream.urls ${PYBOMBS_MIRROR_WORK_DIR}/
+cp ignore.urls ${PYBOMBS_MIRROR_WORK_DIR}/
+
+./pybombs-mirror.sh
+
+cp ./nginx.conf /etc/nginx/sites-available/default
+
+sudo /etc/init.d/nginx restart
+
+```
+ - `upstream-recipe-repos.urls` Recipes repos to be fetched.
  - *(optional)* `ignore.urls` defines urls that will be ignored. Users of these URLs will be passed through upstream.
  - *(optional)* `pre-replace-upstream.urls` defines custom upstreams replacement. In order to gain better syncing speed according to your network condition.
 
@@ -79,18 +81,22 @@ See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.h
 
 ```
 
-10-retrieve-urls-from-recipes.sh.................................................
+10-retrieve-urls-from-recipes....................................................
 
-   recipe-repos.urls     -->    recipes-origin/
+                                 Upstream recipes
+                                       |
+                                       | [git clone/update]
+                                       v
+   upstream-recipe-repos.urls     -->    recipes-origin/
                                        |
                                        | [Copy]
                                        v
-                                    recipes/
+                                    _recipes/
                                        |
 pre-replace-upstream.urls    ---->     +
                                        | [grep & sed]
                                        v
-                                    recipes/
+                                    _recipes/
                                        |
                                        | [grep]
                                        v
@@ -101,7 +107,7 @@ pre-replace-upstream.urls    ---->     +
                                        v
                                recipes-origin.urls
                                        |
-20-fetch.sh............................|.........................................
+20-fetch...............................|.........................................
                                        |             +--> svn/
                                        v             |
                                     [Fetch..] -------+--> wget/
@@ -112,61 +118,26 @@ pre-replace-upstream.urls    ---->     +
        _recipes-mirror-replacement.urls     failed.log
 (PYBOMBS_MIRROR_BASE_URL as placeholder)
                                 |
-30-replace-recipes.sh...........|................................................
+30-replace-recipes..............|................................................
                                 |
                      [sed] PYBOMBS_MIRROR_BASE_URL -> $PYBOMBS_MIRROR_BASE_URL
                                 |
                                 v
-        recipes-mirror-replacement.urls -- [sed] --> recipes/
+        recipes-mirror-replacement.urls -- [sed] --> _recipes/
                                                         |
-50-deploy.sh............................................|........................
+40-deploy...............................................|........................
                                                         | [git commit -am  ]
                                                         | [git clone --bare]
                                                         v
-                                                   _recipes_bare/
+                                                      recipes/
                                                         |
-                                                        | [rsync]
+                                                        |
                                                         v
                                                        DONE. 
 ```
 
 
-## 10-retrieve-urls-from-recipes.sh
-
- - git clone or update repos in `recipe-repos.urls` from upstream into `recipes-origin` directory.
- - Copy `recipes-origin` to `recipes`
- - Patching recipes in `recipes` directory with custom urls from `pre-replace-upstream.urls`
- - Generate `recipes-origin.urls` list from `recipes` directory. In fact, it greps all git/svn/wget urls.
- - Remove `ignore.urls` from `recipes-origin.urls`
-
-## 20-fetch.sh
-
- Fetch repos one by one from `recipes-origin.urls`.
-
- You can also set `DRY_RUN=true` to get a test drive without actually fetching data.
-
-```
-$ DRY_RUN=true ./20-fetch.sh
-```
-
- - Git: All git repos are cloned with `--mirror` argument into `git/` subdirectory.
- - Wget: All wget URLs are fetch into `wget/` subdirectory with 3 max tries. Files are stored without directory hierarchy.
- - SVN: All svn repos are cloned into `svn/` subdirectory.
-
- - Failure: Any failure will be logged in `failed.log`.
-
-**Output**
-
- This script will generate a `recipes-mirror-replacement.urls` list containing:
-
-    <ORIGIN_PYBOMBS_URL>  <MIRROR_PYBOMBS_URL>
-
-## 30-replace-recipes.sh
-
- Replace URLs in `recipes/` directory using `recipes-mirror-replacement.urls`, then you can publish this directory to your users.
-
-
-## Build a PyBOMBS mirror totally from another PyBOMBS mirror
+## Build a PyBOMBS totally from upstream PyBOMBS mirror
 
 ```
 wget http://mirrors.tuna.tsinghua.edu.cn/pybombs/pre-replace-upstream.urls -O 1.urls
@@ -179,7 +150,7 @@ It's very convenient to choose a upstream mirror site with stable network speed.
 ## Change a URL to another URL while your mirror site don't want to fetch it
 
 1. Add that URL replacement pair into `pre-replace-upstream.urls`
-2. Add latter URL into `ignore.urls`
+2. Add the latter URL into `ignore.urls`
 
 For example:
 
