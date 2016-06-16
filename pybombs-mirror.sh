@@ -272,7 +272,6 @@ do
 	git clone --mirror ${_DIR}/_recipes/${REPO_NAME} ${_DIR}/recipes/${REPO_NAME}.git
 done
 
-exit 0
 echo "Cleaning up"
 
 delete_file_if_exist ${_DIR}/_recipes-mirror-replacement.urls
