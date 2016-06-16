@@ -97,11 +97,11 @@ See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.h
                                        v
                                     _recipes/
                                        |
-                                       | grep
+                                       | grep "(wget|svn|git)+..."
                                        v
                                recipes-origin.urls
                                        |
-         ignore.urls           -->     + sed
+         ignore.urls           -->     + sed, delete line
                                        v
                                recipes-origin.urls
                                        |
@@ -123,7 +123,7 @@ See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.h
                                 |
                                 |                    _recipes/
                                 v                       |
-        recipes-mirror-replacement.urls ---sed--->------+ 
+        recipes-mirror-replacement.urls --------->------+ grep & sed 
                                                         |
 40-deploy...............................................|........................
                                                         | git commit -am  
