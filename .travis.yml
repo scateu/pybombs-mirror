@@ -5,9 +5,7 @@ before_install:
   - sudo apt-get install git wget -q -y
 
 script:
-  - ./10-retrieve-urls-from-recipes.sh
-  - DRY_RUN=true ./20-fetch.sh
-  - PYBOMBS_MIRROR_BASE_URL="http://mirrors.tuna.tsinghua.edu.cnm/pybombs" ./30-replace-recipes.sh
+        - DRY_RUN=true PYBOMBS_MIRROR_BASE_URL="http://mirrors.tuna.tsinghua.edu.cnm/pybombs" PYBOMBS_MIRROR_WORK_DIR=$(pwd) ./pybombs-mirror.sh
 
 notifications:
   email:
