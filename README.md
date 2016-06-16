@@ -85,32 +85,32 @@ See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.h
 
                                  Upstream recipes
                                        |
-                                       | [git clone/update]
+                                       | git clone/update
                                        v
-   upstream-recipe-repos.urls     -->    recipes-origin/
+   upstream-recipe-repos.urls  -->  recipes-origin/
                                        |
-                                       | [Copy]
+                                       | Copy
                                        v
                                     _recipes/
                                        |
 pre-replace-upstream.urls    ---->     +
-                                       | [grep & sed]
+                                       | grep & sed
                                        v
                                     _recipes/
                                        |
-                                       | [grep]
+                                       | grep
                                        v
                                recipes-origin.urls
                                        |
      ignore.urls             ---->     +
-                                       | [sed]
+                                       | sed
                                        v
                                recipes-origin.urls
                                        |
 20-fetch...............................|.........................................
                                        |             +--> svn/
                                        v             |
-                                    [Fetch..] -------+--> wget/
+                                    Fetch...  -------+--> wget/
                                        |             |
                                 +------+------+      +--> git/
                                 |             | 
@@ -123,11 +123,11 @@ pre-replace-upstream.urls    ---->     +
                      [sed] PYBOMBS_MIRROR_BASE_URL -> $PYBOMBS_MIRROR_BASE_URL
                                 |
                                 v
-        recipes-mirror-replacement.urls -- [sed] --> _recipes/
+        recipes-mirror-replacement.urls -- sed  -->  _recipes/
                                                         |
 40-deploy...............................................|........................
-                                                        | [git commit -am  ]
-                                                        | [git clone --bare]
+                                                        | git commit -am  
+                                                        | git clone --bare
                                                         v
                                                       recipes/
                                                         |
