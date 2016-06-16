@@ -264,6 +264,8 @@ cat ${_DIR}/upstream-recipe-repos.urls | while read REPO_URL REPO_NAME
 do
 	if [ -e ${_DIR}/_recipes/${REPO_NAME} ]; then
 		cd ${_DIR}/_recipes/${REPO_NAME};
+		git config user.email "scateu+PyBOMBS_MIRROR@gmail.com"
+		git config user.name "PyBOMBS Mirror"
 		git commit -am "PyBOMBS Mirror Replacement: $(date)"
 	else
 		echo "_recipes/${REPO_NAME} doesn't exist!"
@@ -299,7 +301,7 @@ EOF
 
 cat ${_DIR}/upstream-recipe-repos.urls | while read REPO_URL REPO_NAME
 do
-	echo "    pybombs recipes add ${REPO_NAME} git+${PYBOMBS_MIRROR_BASE_URL}/git/${REPO_NAME}.git" >> ${_DIR}/README.txt
+	echo "    pybombs recipes add ${REPO_NAME} git+${PYBOMBS_MIRROR_BASE_URL}/recipes/${REPO_NAME}.git" >> ${_DIR}/README.txt
 done
 
 cat >> ${_DIR}/README.txt <<EOF
@@ -319,5 +321,5 @@ EOF
 cat ${_DIR}/upstream-recipe-repos.urls | while read REPO_URL REPO_NAME
 do
 	echo "    pybombs recipes remove ${REPO_NAME}" >> ${_DIR}/README.txt
-	echo "    pybombs recipes add ${REPO_NAME} git+${PYBOMBS_MIRROR_BASE_URL}/git/${REPO_NAME}.git" >> ${_DIR}/README.txt
+	echo "    pybombs recipes add ${REPO_NAME} git+${PYBOMBS_MIRROR_BASE_URL}/recipes/${REPO_NAME}.git" >> ${_DIR}/README.txt
 done
