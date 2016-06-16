@@ -44,5 +44,6 @@ rsync $RSYNC_PARAM wget/ ${PYBOMBS_SITE_BASE}/wget/
 rsync $RSYNC_PARAM svn/ ${PYBOMBS_SITE_BASE}/svn/
 rsync $RSYNC_PARAM _recipes_bare/ ${PYBOMBS_SITE_BASE}/recipes/
 rsync $RSYNC_PARAM recipes-mirror-replacement.urls ${PYBOMBS_SITE_BASE}/
+rsync $RSYNC_PARAM pre-replace-upstream.urls ${PYBOMBS_SITE_BASE}/
 
 echo "maybe you need to : sudo chown -R www-data:www-data ${PYBOMBS_SITE_BASE}"
