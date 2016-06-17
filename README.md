@@ -86,12 +86,12 @@ See also: <http://lists.gnu.org/archive/html/discuss-gnuradio/2016-06/msg00170.h
 ```
 
 10-retrieve-urls-from-recipes....................................................
-
+                            upstream-recipe-repos.urls  
                                 [Upstream recipes]
                                        |
                                        | git clone/update
                                        v
-   upstream-recipe-repos.urls  -->  recipes-origin/
+                                    recipes-origin/
                                        |
                                        | Copy
                                        v
