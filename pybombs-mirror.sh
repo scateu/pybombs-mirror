@@ -109,7 +109,7 @@ fi
 
 
 echo "===================="
-grep  -r -E "(git|svn|wget)\+.*$" ${_DIR}/_recipes/ | rev |cut -d' '  -f1 |rev > ${_DIR}/recipes-origin.urls
+grep  -r -E "(git|svn|wget)\+.*$" ${_DIR}/_recipes/ | awk -F' ' '{print $NF}' > ${_DIR}/recipes-origin.urls
 echo "recipes-origin.urls generated successfully!"
 echo "===================="
 echo 
