@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/scateu/pybombs-mirror.svg?branch=master)](https://travis-ci.org/scateu/pybombs-mirror)
 ## Sites that running with this script
  - <https://mirrors.tuna.tsinghua.edu.cn/pybombs/README.txt>
+ - <http://mirrors.aliyun.com/pybombs/README.txt>
  
 ## As Mirror Maintainer
 
