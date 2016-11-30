@@ -312,7 +312,7 @@ cat >> ${_DIR}/README.txt <<EOF
     . ./setup_env.sh
     gnuradio-companion
 
-    pybombs install rtl-sdr hackrf bladerf gr-osmosdr gr-bluetooth gr-ieee-80211
+    pybombs install rtl-sdr hackrf bladeRF gr-osmosdr gr-bluetooth gr-ieee-80211
 
 
 Update
