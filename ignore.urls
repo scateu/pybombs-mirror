@@ -3,5 +3,4 @@ wget+http://sourceforge.net/projects/arma/files/armadillo-4.400.1.tar.gz
 svn+https://www.cgran.org/svn/projects/gr-pocsag/trunk
 svn+http://googletest.googlecode.com/svn/trunk/
 git+http://git.alsa-project.org/alsa-lib.git
-git+https://github.com/analogdevicesinc/libiio
 git+git://svn.berlin.ccc.de/airprobe
